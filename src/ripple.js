@@ -9,7 +9,11 @@ var Ripple = {
 
         setProps(Object.keys(binding.modifiers),props);
 
-        el.addEventListener(props.event, function(event) {
+        el.addEventListener('touchstart', function(event) {
+            rippler(event, el, binding.value);
+        });
+
+        el.addEventListener('mousedown', function(event) {
             rippler(event, el, binding.value);
         });
 
@@ -20,7 +24,7 @@ var Ripple = {
             var target = el;
             // Get border to avoid offsetting on ripple container position
             var targetBorder = parseInt((getComputedStyle(target).borderWidth).replace('px', ''));
-            
+
             var clientX = event.clientX || event.touches[0].clientX
             var clientY = event.clientY || event.touches[0].clientY
 
@@ -107,6 +111,7 @@ var Ripple = {
                     rippleContainer.parentNode.removeChild(rippleContainer);
                 }, 850);
 
+                el.removeEventListener('touchend', clearRipple, false);
                 el.removeEventListener('mouseup', clearRipple, false);
 
                 // After removing event set position to target to it's original one
@@ -133,6 +138,8 @@ var Ripple = {
 
             if(event.type === 'mousedown') {
                 el.addEventListener('mouseup', clearRipple, false);
+            }else if (event.type === 'touchstart') {
+                el.addEventListener('touchend', clearRipple, false);
             } else {
                 clearRipple();
             }
