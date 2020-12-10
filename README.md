@@ -1,14 +1,15 @@
-#   Material Ripple Effect
+# v-ripple-directive
 
-Material Ripple Effect as Vue Directive.
+Vue directive for ripple effect.
 
 <p align="center">
-<img src="https://media.giphy.com/media/MfW6n0zLw2k7K/giphy.gif" />
+<img src="https://media.giphy.com/media/MfW6n0zLw2k7K/giphy.gif"/>
 </p>
 
-This directive it's meant to be used in any element in which you like to achieve such ripple effect.
+This directive can be used in any element in which you like to achieve such
+ripple effect.
 
-<a href="https://pygmyslowloris.github.io/vue-ripple-directive/"> Live Demo</a>
+<a href="https://pygmyslowloris.github.io/vue-ripple-directive/">Live Demo</a>
 
 ##  Installation
 
@@ -16,10 +17,17 @@ This directive it's meant to be used in any element in which you like to achieve
 npm install vue-ripple-directive --save
 ```
 
->### Important Notice
->The directive will work better if the element where you attach it is **relative positioned**. 
->Although the directive will try to set `position: relative` if the element does not have this property.
->This is because since v2.0.* the ripple directive changed its positioning method to avoid trailing issues when elements in the UI move, causing the ripple to stay in previous position and not in the one that element moved to.
+## Important Notice
+
+The directive will work better if the element where you attach it is **relative
+positioned**.
+
+Although the directive will try to set `position: relative` if the element does
+not have this property.
+
+This is because since v2.0.* the ripple directive changed its positioning
+method to avoid trailing issues when elements in the UI move, causing the
+ripple to stay in previous position and not in the one that element moved to.
 
 ##  Options
 
@@ -31,22 +39,24 @@ Optional parameter to pass to the directive.
 
 ##  Modifiers
 
-By default this directive attaches a click handler to the element as well as the transition is set for 600ms.
-For those who wants to modify the same, just pass modifiers to the directive:
+By default, this directive attaches a click handler to the element as well as
+the transition is set for 600ms.
+
+To modify, pass modifiers to the directive:
 
 ```
 v-ripple.mouseover.500
 ```
 
-Can also modify only one
+Or modify only one:
 
 ```
 v-ripple.mouseover
 ```
 
-##  Sample & Usage
+##  Usage
 
-First you need to import the directive and add it to Vue.
+Import the directive and add it to Vue.
 
 ```
 import Ripple from 'vue-ripple-directive'
@@ -60,15 +70,16 @@ Then use on any element you want to achieve the effect.
 <div v-ripple class="button is-primary">This is a button</div>
 ```
 
-If you want a custom color just pass a color parameter as `string`. It's best if you use RGBA colors to achieve a greater effect.
+If you want a custom color just pass a color parameter as `string`. It's best
+if you use RGBA colors to achieve a greater effect.
 
 ```
 <div v-ripple="'rgba(255, 255, 255, 0.35)'"  class="button">I have different color</div>
 ```
 
-##  Global settings
+## Global Settings
 
-You can set the default color and z-index for all your ripples as the following example
+You can set the default color and z-index for all your ripples:
 
 ```
 import Ripple from 'vue-ripple-directive'

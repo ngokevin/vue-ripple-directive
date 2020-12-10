@@ -1,9 +1,12 @@
 const Ripple = {
   bind: function (el, binding) {
     // Default values.
-    let props = {event: 'mousedown', transition: Ripple.transition || 600};
+    let props = {
+      event: 'mousedown',
+      transition: Ripple.transition || 600
+    };
 
-    setProps(Object.keys(binding.modifiers), props);
+    setProps(Object.keys(binding.modifiers),props);
 
     let touchStartClientX;
     let touchStartClientY;
@@ -50,8 +53,8 @@ const Ripple = {
       // Create the ripple and its container.
       let ripple = document.createElement('div');
       let rippleContainer = document.createElement('div');
-      ripple.className = 'ripple';
       rippleContainer.className = 'ripple-container';
+      ripple.className = 'ripple';
 
       // Styles for ripple.
       ripple.style.marginTop = '0px';
@@ -62,7 +65,7 @@ const Ripple = {
       ripple.style.borderRadius = '50%';
       ripple.style.pointerEvents = 'none';
       ripple.style.position = 'relative';
-      ripple.style.zIndex = -1;
+      ripple.style.zIndex = zIndex;
       ripple.style.backgroundColor = bg;
 
       // Styles for rippleContainer.
@@ -82,7 +85,7 @@ const Ripple = {
       }
 
       rippleContainer.appendChild(ripple);
-      target.prepend(rippleContainer);
+      target.appendChild(rippleContainer);
 
       ripple.style.marginLeft = dx + 'px';
       ripple.style.marginTop = dy + 'px';
@@ -149,7 +152,7 @@ const Ripple = {
   }
 };
 
-function setProps (modifiers, props) {
+function setProps (modifiers,props) {
   modifiers.forEach(item => {
     if(isNaN(Number(item)))
       props.event = item;
